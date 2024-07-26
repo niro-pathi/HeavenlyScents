@@ -16,6 +16,12 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
             base(id, name, description, price, unitType, maxAmountInStock)
         {
         }
+        public override void IncreaseStock()
+        {
+            AmountInStock++;
+        }
+
+
 
         public override string DisplayDetailsFull()
         {

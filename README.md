@@ -21,3 +21,4 @@ I have used Heavenly Scents Aromatherapy online shop (https://www.heavenlyscents
 # Working with Class Hierarchies
 - Adding inheritance
 - Working with Polymorphism
+- Working with Abstract classes

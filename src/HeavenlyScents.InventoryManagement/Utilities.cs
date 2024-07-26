@@ -189,7 +189,7 @@ namespace HeavenlyScents.InventoryManagement
             switch (productType)
             {
                 case "1":
-                    newProduct = new Product(newId, name, description, new Price() { ItemPrice = price, Currency = currency }, unitType, maxInStock);
+                    newProduct = new RegularProduct(newId, name, description, new Price() { ItemPrice = price, Currency = currency }, unitType, maxInStock);
                     break;
 
                 case "2":
