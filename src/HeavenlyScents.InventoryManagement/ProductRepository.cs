@@ -1,4 +1,5 @@
-﻿using HeavenlyScents.InventoryManagement.Domain.General;
+﻿using HeavenlyScents.InventoryManagement.Domain.Contracts;
+using HeavenlyScents.InventoryManagement.Domain.General;
 using HeavenlyScents.InventoryManagement.Domain.ProductManagement;
 using System;
 using System.Collections.Generic;
@@ -138,6 +139,23 @@ namespace HeavenlyScents.InventoryManagement
             return products;
         }
 
+        public void SaveToFile(List<ISaveable> saveables)
+        {
+            StringBuilder sb = new StringBuilder();
+            string path = $"{directory}{productsFileName}";
+
+            foreach (var item in saveables)
+            {
+                sb.Append(item.ConvertToStringForSaving());
+                sb.Append(Environment.NewLine);
+            }
+
+            File.WriteAllText(path, sb.ToString());
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Saved items successfully");
+            Console.ResetColor();
+        }
     }
 
 }

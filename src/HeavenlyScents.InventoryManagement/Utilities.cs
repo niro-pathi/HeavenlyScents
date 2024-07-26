@@ -1,4 +1,5 @@
-﻿using HeavenlyScents.InventoryManagement.Domain.General;
+﻿using HeavenlyScents.InventoryManagement.Domain.Contracts;
+using HeavenlyScents.InventoryManagement.Domain.General;
 using HeavenlyScents.InventoryManagement.Domain.OrderManagement;
 using HeavenlyScents.InventoryManagement.Domain.ProductManagement;
 using System;
@@ -65,7 +66,7 @@ namespace HeavenlyScents.InventoryManagement
                     ShowSettingsMenu();
                     break;
                 case "4":
-                    //SaveAllData();
+                    SaveAllData();
                     break;
                 case "0":
                     break;
@@ -127,6 +128,23 @@ namespace HeavenlyScents.InventoryManagement
                 }
             }
             while (userSelection != "0");
+            ShowMainMenu();
+        }
+
+        private static void SaveAllData()
+        {
+            ProductRepository productRepository = new();
+
+            List<ISaveable> saveables = new List<ISaveable>();
+
+            foreach (var item in inventory)//now a list of Products
+            {
+                saveables.Add(item as ISaveable);
+            }
+
+            productRepository.SaveToFile(saveables);
+
+            Console.ReadLine();
             ShowMainMenu();
         }
 

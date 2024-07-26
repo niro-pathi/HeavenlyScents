@@ -29,3 +29,4 @@ I have used Heavenly Scents Aromatherapy online shop (https://www.heavenlyscents
 - Implementing and using interfaces
 - Implementing multiple interfaces
 - Using built-in interfaces (IClonable)
+- Using polymorphism with interfaces
