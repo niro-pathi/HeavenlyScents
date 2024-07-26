@@ -16,4 +16,4 @@ I have used Heavenly Scents Aromatherapy online shop (https://www.heavenlyscents
 - Working with objects
 - Adding application interface with multiple classes
 - Loading data from a file
-- Adding unit testing (https://github.com/niro-pathi/HeavenlyScents.InventoryManagement.Test)
+- Adding unit testing for Product classes
