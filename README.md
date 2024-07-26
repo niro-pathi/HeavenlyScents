@@ -23,3 +23,9 @@ I have used Heavenly Scents Aromatherapy online shop (https://www.heavenlyscents
 - Working with Polymorphism
 - Working with Abstract classes
 - Using Extension methods
+
+# Working with Interfaces
+- Creating an interface
+- Implementing and using interfaces
+- Implementing multiple interfaces
+- Using built-in interfaces (IClonable)

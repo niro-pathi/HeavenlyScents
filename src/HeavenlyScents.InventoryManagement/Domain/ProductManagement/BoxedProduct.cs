@@ -1,4 +1,5 @@
-﻿using HeavenlyScents.InventoryManagement.Domain.General;
+﻿using HeavenlyScents.InventoryManagement.Domain.Contracts;
+using HeavenlyScents.InventoryManagement.Domain.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
 {
-    public class BoxedProduct : Product
+    public class BoxedProduct : Product, ISaveable, ILoggable
     {
         private int amountPerBox;
 
@@ -108,6 +109,22 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
                 IsBelowStockThreshold = false;
             }
         }
+
+        public string ConvertToStringForSaving()
+        {
+            return $"{Id};{Name};{Description};{maxItemsInStock};{Price.ItemPrice};{(int)Price.Currency};{(int)UnitType};1;{AmountPerBox};";
+        }
+
+        void ILoggable.Log(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object Clone()
+        {
+            return new BoxedProduct(0, this.Name, this.Description, new Price() { ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency }, this.maxItemsInStock, this.AmountPerBox);
+        }
+
 
 
         /*

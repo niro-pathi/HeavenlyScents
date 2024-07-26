@@ -14,9 +14,9 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
         {
         }
 
-       // public void UseFreshBoxedProduct(int items)
-       // {
+        // public void UseFreshBoxedProduct(int items)
+        // {
         //    UsedBoxedProduct(3);
-      //  }
+        //  }
     }
 }

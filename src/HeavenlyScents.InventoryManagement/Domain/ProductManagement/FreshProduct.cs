@@ -1,4 +1,5 @@
-﻿using HeavenlyScents.InventoryManagement.Domain.General;
+﻿using HeavenlyScents.InventoryManagement.Domain.Contracts;
+using HeavenlyScents.InventoryManagement.Domain.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
 {
-    public class FreshProduct : Product
+    public class FreshProduct : Product, ISaveable
     {
         public DateTime ExpiryDateTime { get; set; }
         public string? StorageInstructions { get; set; }
@@ -20,8 +21,6 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
         {
             AmountInStock++;
         }
-
-
 
         public override string DisplayDetailsFull()
         {
@@ -41,5 +40,16 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
             return sb.ToString();
         }
 
+        public string ConvertToStringForSaving()
+        {
+            return $"{Id};{Name};{Description};{maxItemsInStock};{Price.ItemPrice};{(int)Price.Currency};{(int)UnitType};1;";
+        }
+
+        public override object Clone()
+        {
+           return new FreshProduct(0, this.Name, this.Description, new Price() { ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency }, this.UnitType, this.maxItemsInStock);
+
+
+        }
     }
 }
