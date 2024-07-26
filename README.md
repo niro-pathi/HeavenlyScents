@@ -22,3 +22,4 @@ I have used Heavenly Scents Aromatherapy online shop (https://www.heavenlyscents
 - Adding inheritance
 - Working with Polymorphism
 - Working with Abstract classes
+- Using Extension methods
