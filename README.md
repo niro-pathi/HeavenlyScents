@@ -17,3 +17,7 @@ I have used Heavenly Scents Aromatherapy online shop (https://www.heavenlyscents
 - Adding application interface with multiple classes
 - Loading data from a file
 - Adding unit testing for Product classes
+
+# Working with Class Hierarchies
+- Adding inheritance
+- Working with Polymorphism

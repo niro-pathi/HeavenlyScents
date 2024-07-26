@@ -13,7 +13,7 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
         private string name = string.Empty;
         private string? description;
 
-        private int maxItemsInStock = 0;
+        protected int maxItemsInStock = 0;
 
         public int Id
         {
@@ -44,8 +44,8 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
             }
         }
         public UnitType UnitType { get; set; }
-        public int AmountInStock { get; private set; }
-        public bool IsBelowStockThreshold { get; private set; }
+        public int AmountInStock { get; protected set; }
+        public bool IsBelowStockThreshold { get; protected set; }
         public Price Price { get; set; }
 
         public Product(int id) : this(id, string.Empty)
@@ -69,7 +69,7 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
 
             UpdateLowStock();
         }
-        public void UseProduct(int items)
+        public virtual void UseProduct(int items)
         {
             if (items <= AmountInStock)
             {
@@ -82,16 +82,16 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
             }
             else
             {
-                Log($"Not enough items on stock for {CreateSimpleProuctRepresentation()}. {AmountInStock} available but {items} requested.");
+                Log($"Not enough items on stock for {CreateSimpleProductRepresentation()}. {AmountInStock} available but {items} requested.");
             }
         }
 
-        public void IncreaseStock()
+        public virtual void IncreaseStock()
         {
             AmountInStock++;
         }
 
-        public void IncreaseStock(int amount)
+        public virtual void IncreaseStock(int amount)
         {
             int newStock = AmountInStock + amount;
 
@@ -102,7 +102,7 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
             else
             {
                 AmountInStock = maxItemsInStock; //no over stock
-                Log($"{CreateSimpleProuctRepresentation} stock overflow. {newStock - AmountInStock} item(s) ordered that couldn't be stored.");
+                Log($"{CreateSimpleProductRepresentation} stock overflow. {newStock - AmountInStock} item(s) ordered that couldn't be stored.");
             }
 
             if (amount > 10)
@@ -112,7 +112,7 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
         }
 
 
-        public void DecreaseStock(int items, string reason)
+        protected void DecreaseStock(int items, string reason)
         {
             if (items <= AmountInStock)
             {
@@ -132,14 +132,14 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
             return $"{Id}. {Name} \n{AmountInStock} item(s) in stock";
         }
 
-        public string DisplayDetailsFull()
+        public virtual string DisplayDetailsFull()
         {
 
             return DisplayDetailsFull("");
 
         }
 
-        public string DisplayDetailsFull(string extraDetails)
+        public virtual string DisplayDetailsFull(string extraDetails)
         {
             StringBuilder sb = new();
 

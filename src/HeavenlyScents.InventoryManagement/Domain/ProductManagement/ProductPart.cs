@@ -22,12 +22,12 @@ namespace HeavenlyScents.InventoryManagement.Domain.ProductManagement
                 IsBelowStockThreshold = true;
             }
         }
-        private object CreateSimpleProuctRepresentation()
+        protected object CreateSimpleProductRepresentation()
         {
             return $"Product {Id} ({Name})";
         }
 
-        private void Log(string message)
+        protected void Log(string message)
         {
             //this can be stream to a log file
             Console.WriteLine(message);

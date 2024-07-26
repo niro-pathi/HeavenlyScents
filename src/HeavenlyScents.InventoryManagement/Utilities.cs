@@ -1,8 +1,10 @@
-﻿using HeavenlyScents.InventoryManagement.Domain.OrderManagement;
+﻿using HeavenlyScents.InventoryManagement.Domain.General;
+using HeavenlyScents.InventoryManagement.Domain.OrderManagement;
 using HeavenlyScents.InventoryManagement.Domain.ProductManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,6 +23,8 @@ namespace HeavenlyScents.InventoryManagement
             //inventory.Add(p1);
             //inventory.Add(p2);
             //inventory.Add(p3);
+
+            BoxedProduct bp = new BoxedProduct(6, "Wick", "Candle Wicks", new Domain.General.Price() { ItemPrice = 9.50, Currency = Currency.Dollar }, 10,100);
 
             ProductRepository productRepository = new();
             inventory = productRepository.LoadProductsFromFile();
